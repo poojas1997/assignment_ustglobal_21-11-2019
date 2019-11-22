@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>searh</title>
+</head>
+<body>
+
+<h2>Search</h2>
+
+<a href="./login.html">Home</a>
+<a style='float:right' href= '#'>Logout</a>
+
+<form action="" method="post">
+
+        <div class="card card-body col-md-6 offset-3 mt-5">
+
+	<label>search</label>
+	<input type="number" name="id" class="form-control"><br><br>
+	<input type="submit" value="search">
+	</div>
+	
+	
+</form>
+</body>
+</html>

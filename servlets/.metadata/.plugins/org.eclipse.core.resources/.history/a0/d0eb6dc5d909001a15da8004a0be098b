@@ -1,0 +1,6 @@
+package com.ustglobal.webap.servlets;
+
+public class Employee {
+int id;
+String name;
+}

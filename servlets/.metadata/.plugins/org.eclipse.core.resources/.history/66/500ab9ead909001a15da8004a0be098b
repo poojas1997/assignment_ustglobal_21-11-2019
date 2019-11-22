@@ -1,0 +1,12 @@
+package com.ustglobal.webap.servlets;
+
+public class Employee {
+private int id;
+ private String name;
+public void setId(int i) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+}

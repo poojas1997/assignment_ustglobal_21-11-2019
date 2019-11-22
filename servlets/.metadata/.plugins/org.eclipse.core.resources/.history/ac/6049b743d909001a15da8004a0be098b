@@ -1,0 +1,5 @@
+package com.ustglobal.webap.servlets;		//get-bean.jsp
+
+public class SetRequestAttributeServlet {
+
+}

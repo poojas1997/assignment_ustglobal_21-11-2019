@@ -1,0 +1,5 @@
+package com.ustgloabal.empwebapp.servlets;
+
+public class LogoutServlet {
+
+}

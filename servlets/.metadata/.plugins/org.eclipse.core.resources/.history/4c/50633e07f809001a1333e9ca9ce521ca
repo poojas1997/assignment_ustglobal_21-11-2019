@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<fieldset align='center'>
+	<form action='./login' method='post'>
+		<h2>Login</h2>
+ 	    
+		<label>Id</label>
+		<input type='number' name='id' value='"+id+"' class='form-control'><br><br>
+		
+		<label>Password</label>
+		<input type='password' name='password' class='form-control'><br><br>
+		
+		<input type='checkbox' name='rememberme' value='checked'>
+		<label>Remember Me</label><br><br>
+		
+		<input type='reset' value='Reset'>
+		<input type='submit' value='Login' >
+ 		
+	</form>
+</fieldset>
+		<a href='./register.html'>Register</a>
+
+</body>
+</html>
