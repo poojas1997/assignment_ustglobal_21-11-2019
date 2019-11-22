@@ -1,0 +1,16 @@
+package com.ustglobal.jpawithhibernate.onttoone;
+
+import javax.persistence.*;
+import lombok.Data;				//instead of getter() & setter()
+
+@Data
+@Entity
+public class Person {
+	@Id
+	@Column
+	private int pid;
+	
+	@Column
+	private String pname;
+	
+}//end of Person

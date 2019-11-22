@@ -1,0 +1,9 @@
+package com.ustglobal.jpawithhibernate.jpql;
+
+public class ReadAllDemo {
+
+	public static void main(String[] args) {
+		
+		
+	}//end of main
+}//end of ReadAllDemo

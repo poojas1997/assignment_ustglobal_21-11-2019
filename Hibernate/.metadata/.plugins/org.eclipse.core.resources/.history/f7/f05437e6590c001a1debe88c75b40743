@@ -1,0 +1,9 @@
+package com.ustglobal.jpawithhibernate.onttoone;
+
+
+public class Person {
+	
+	private int pid;
+	private String pname;
+	
+}//end of Person

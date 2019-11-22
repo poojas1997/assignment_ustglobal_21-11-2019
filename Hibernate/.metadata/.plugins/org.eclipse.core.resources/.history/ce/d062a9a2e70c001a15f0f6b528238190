@@ -1,0 +1,11 @@
+package com.ustglobal.jpawithhibernate.onttoone;
+
+import lombok.Data;				//instead of getter() & setter()
+
+@Data
+public class Person {
+	
+	private int pid;
+	private String pname;
+	
+}//end of Person

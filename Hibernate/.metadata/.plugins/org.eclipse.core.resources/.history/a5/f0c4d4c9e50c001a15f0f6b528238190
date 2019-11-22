@@ -1,0 +1,11 @@
+package com.ustglobal.jpawithhibernate.onttoone;
+
+import lombok.Data;		//instead of getter() & setter()
+
+@Data	
+public class VoterCard {
+	
+	private int vid;
+	private String vname;
+	
+}//end of VoterCard

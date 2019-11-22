@@ -1,0 +1,15 @@
+package com.ustglobal.jpawithhibernate.onttoone;
+
+import javax.persistence.*;
+
+import lombok.Data;		//instead of getter() & setter()
+						//Testonetoone
+@Data	
+@Entity
+
+public class VoterCard {
+	
+	private int vid;
+	private String vname;
+	
+}//end of VoterCard

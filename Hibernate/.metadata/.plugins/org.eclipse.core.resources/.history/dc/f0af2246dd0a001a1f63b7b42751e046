@@ -1,0 +1,5 @@
+package com.ustglobal.jdbcpofjwh.dto;
+
+public class SelectStatement {
+
+}
