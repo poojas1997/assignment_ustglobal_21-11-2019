@@ -1,0 +1,1021 @@
+show databases;
+show dummydb;
+use dummydb;
+show tables;
+desc product;
+drop database dummydb;	//drops the entire database
+create database ust_db;
+use ust_db;
+create table product(pid int, pname varchar(120), pquantity int);
+desc product;
+drop table product;
+show tables;
+alter table product add column price int;	//add extra column
+alter table product change column price cost int;	//replaces the old name by new name
+alter table product drop column cost;	//deletes the column
+
+rename table product to product_info;
+insert into product_info values(102,'pen',20);
+
+select * from table_name;	//selection
+update product_info set quantity = 100;
+delete from product_info;
+select pname from product_info;//projection
+truncate table product_info;
+select distinct designation from employee;/select distinct designation,deptno from employee;	//Distinct
+select salary as sal from employee;/select salary  sal from employee;	//Alias name
+update employee set mobileno=22877 where eid=102;	//where clause
+select * from employee where eid=105;	//where clause
+delete from employee where eid=101;	//where clause
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+								
+							:OPERATORS:
+
+
+select salary+5000 increment from employee;	//Arithmetic Operator(+)
+select salary-5000 decrement from employee;	//Arithmetic Operator(-)
+select salary*12 anual from employee; 		//Arithmetic Operator(*)
+select salary/30 day from employee;		//Arithmetic Operator(/)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:RELATIONAL OPERATOR:
+
+write a query to display all the records whose emp designation is software developer.
+-> 	select * from employee where designation='software developer';
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+==================================================================================================================================================
+
+write a query to display all the records of the emp excluding who is working in deptno 20.
+-> 	select * from employee where deptno != 20;
+-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+======================================================================================================================================================
+
+write a query to display the record of employee whose salary is greater than 3000.
+->	 select * from employee where salary>3000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+==================================================================================================================================================
+
+write a query to display the record of employee whose age is less than 30;
+->	 select * from employee where age<30;
+-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+=======================================================================================================================================================
+
+write a query to display name,sal,email,mobileno whose age is equal to 18 or greater than 18.
+->	select ename,mobileno,email,salary from employee where age>=18;
++---------+-----------+-------------------+--------+
+| ename   | mobileno  | email             | salary |
++---------+-----------+-------------------+--------+
+| banu    |     22877 | mary@gmail.com    |   2000 |
+| haseeb  | 991633754 | haseeb@gmail.com  |  50000 |
+| halima  | 953590083 | halima@gmail.com  |  30000 |
+| ramesh  | 956324823 | ramesh@gmail.com  |  25000 |
+| pooja   | 701905168 | pooja@gmail.com   |  35000 |
+| puneeth | 701682538 | puneeth@gmail.com |  35000 |
+| nadeem  | 935325628 | nadeem@gmail.com  |  55000 |
+| sathya  | 935868923 | sathya@gmail.com  |  25000 |
+| bhargav | 785142639 | bhargav@gmail.com |  45000 |
++---------+-----------+-------------------+--------+
+===================================================================================================================================================
+
+wqtd whose sal is less than orequal to 35000.
+->	select * from employee where salary <=35000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:LOGICAL OPERATOR:
+
+1.AND:-
+	Syntax: select * from table_name where condition1 and condition2;
+2.OR:-
+	Syntax: select * from table_name where condition1 or condition2;
+3.NOT:-
+	Syntax: select * from table_name where not condition;
+
+wqtd all the employee details who is working in deptno.20 as well as salary is greater than 25000.
+-> 	select * from employee where deptno=20 and salary>25000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+-------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+-------------+
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR          |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+-------------+
+==============================================================================================================================================
+wqtd name,salary from employee table who is working in deptno 10  and 20.
+-> 	select ename,salary from employee where deptno=10 and deptno=20;
+empty set.
+================================================================================================================================================
+wqtd emp detail whose job designation is as tester and age is 25.
+-> 	select * from employee where designation='tester' and age=25;
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| 109 | sathya | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com | male   | tester      |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+================================================================================================================================================
+wqtd all record of employee who is working as tester or having salary more than 40000.
+->	select * from employee where designation='tester' or salary>40000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+================================================================================================================================================
+wqtd name,salary,age from employee table who is working in deptno 10 or 40 or 50.
+-> 	select ename,salary,age from employee where deptno=10 or deptno=40 or deptno=50;
++--------+--------+-----+
+| ename  | salary | age |
++--------+--------+-----+
+| halima |  30000 |  22 |
+| ramesh |  25000 |  24 |
+| nadeem |  55000 |  27 |
+| sathya |  25000 |  25 |
++--------+--------+-----+
+================================================================================================================================================
+wqtd employee details whose age is more than 25 and bloodgroup is B+.
+-> 	select * from employee where age>25 or bloodgroup="B+";
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 102 | banu   |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com   | female | clerk              |
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+================================================================================================================================================
+wqtd all the record of employee excluding tester.
+->	select * from employee where not  designation= 'tester';/
+  	select * from employee where  designation <> 'tester';/
+ 	select * from employee where  designation !='tester';
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+================================================================================================================================================
+wqtd name of all the employee who is working as HR or tester and salary is greater than 40000.
+->	select ename from employee where designation='HR' or 'tester'and salary>40000;
++---------+
+| ename   |
++---------+
+| ramesh  |
+| bhargav |
++---------+
+================================================================================================================================================
+wqtd all the employee excluding software developer who are working in deptno40.
+-> 	select * from employee where not (designation='software developer' and deptno = 40);
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+================================================================================================================================================
+wqtd all the software developer who are working for deptno 10 or 40.
+->	 select * from employee where designation='software developer' and (deptno=10 or deptno=40);
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:SPECIAL OPERATORS:
+
+1.In Operator:- Syntax: select * from table_name where column_name IN(value-1,value-2....value-n)
+
+wqtd all the record of employee whose is working in deptno 40,50,60,70.
+->	select * from employee where deptno in (40,50,60,70);
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 104 | halima | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com | female | tester             |
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+===============================================================================================================================================
+wqtd name of all the employee who is working as a tester,HR,clerk.
+->	 select ename from employee where designation in ('HR','tester','clerk');
++---------+
+| ename   |
++---------+
+| banu    |
+| halima  |
+| ramesh  |
+| sathya  |
+| bhargav |
++---------+
+========================================================================================================================================
+wqtd the detail of tester,admin,software developer who are working in deptno 20 or 30 and salary is greater than 40000.
+->	select * from employee where designation in ('tester','software developer','admin') and (deptno=20 or deptno=30) and salary>40000 ;
+Empty set (0.00 sec)
+==========================================================================================================================================
+wqtd the detail of tester,admin,software developer who are working in deptno 20 or 40 and salary is greater than 40000.
+->	select * from employee where designation in ('tester','software developer','admin') and (deptno=20 or deptno=40) and salary>40000 ;
+	+-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+	| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
+	+-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+	| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
+	+-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+==========================================================================================================================================
+2.Not In Operator:- Syntax: select * from table_name where column_name not in (value1,value2,....value-n);
+
+wqtd all the record of employee excluding who is working as 'tester','admin','HR'.
+->	select * from employee where designation not in('tester','HR','admin');
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+=====================================================================================================================================================
+wqtd all the record of employee whose age is 20,25,30,40.Exclude all the detail of tester and software developer.
+->	select * from employee where age in (20,25,30,40) and designation not in('tester','software developer');
++-----+-------+----------+------------+-----+------------+------------+--------+--------+----------------+--------+-------------+
+| eid | ename | mobileno | DOB        | age | DOJ        | bloodgroup | deptno | salary | email          | gender | designation |
++-----+-------+----------+------------+-----+------------+------------+--------+--------+----------------+--------+-------------+
+| 102 | banu  |    22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com | female | clerk       |
++-----+-------+----------+------------+-----+------------+------------+--------+--------+----------------+--------+-------------+
+=======================================================================================================================================================
+3.Between Operator:- Syntax: select * from table_name where column_name between value1 to value2;
+
+wqtd all the detail of employee whose age is between 20 to 40.
+->	select *  from employee where age between 20 and 40;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+====================================================================================================================================================
+wqtd all the detail of employee who were hired during 2017.
+->	select * from employee where DOJ between '2017-01-01' and '2017-12-31';
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| 105 | ramesh | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com | male   | HR          |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+====================================================================================================================================================
+4.Not Between:- Syntax: select * from table_name where column_name not between value1 to value2.
+
+wqtd all the record of employee excluding whose salary is in the range of 25000 to 35000.
+->	select * from employee where salary not between 25000 and 35000;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+=====================================================================================================================================================
+5.Is Operator:- used to check null values.
+	Syntax: select * from table_name where col_name is null;
+
+====================================================================================================================================================
+6.Like Operator:- used for pattern matching.
+character-2 types:
+		  ->ordinary character : 'A'-'Z', 1-9
+		  ->special character : '%' = matches 0 to n value.  
+					'_' = matches single value.
+
+	Syntax: select * from table_name where column_name Like '%' / '_' ;
+
+wqtd all the detail of employee whose name starts with 'A'.
+->	 select * from employee where ename Like 'A%';
+Empty set
+=====================================================================================================================================================
+wqtd name of employee whose second character is 'I'.
+->	 select * from employee where ename Like '_i%';
+Empty set
+================================================================================================================================================
+wqtd the name of employee which has atleast 2 'l' in their name.
+->	select * from employee where ename Like '%l%l%';
+Empty set (0.00 sec)
+====================================================================================================================================================
+wqtd the name of employee whose name start with 'n' and end with 'm'.
+->	 select * from employee where ename Like 'n%m';
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation        |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+| 108 | nadeem | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com | male   | software developer |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+--------------------+
+====================================================================================================================================================
+wqtd all the records of employee if the employee name begins with 'a' or 'h'.
+->	select * from employee where ename like 'a%' or ename like 'h%';
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | ename  | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email            | gender | designation |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+| 103 | haseeb | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com | male   | manager     |
+| 104 | halima | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com | female | tester      |
++-----+--------+-----------+------------+-----+------------+------------+--------+--------+------------------+--------+-------------+
+====================================================================================================================================================
+wqtd employee name ,salary who is working in deptno 10,20,30 and job designation starts with 's'.
+->	select ename,salary from employee where deptno in(10,20,30) and designation like 's%';
++---------+--------+
+| ename   | salary |
++---------+--------+
+| puneeth |  35000 |
++---------+--------+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+								
+							:FUNCTIONS: 
+
+
+1.Single-row function/Scalar function		2.Multi-row function/Aggregate function
+
+1.Single-row function: For single input, we get single output.
+
+1.Multi-row function: For 'n' no. of inputs, we get single output.
+			ex:Total no. of students in class.
+
+  Types :  		Syntax : select function_name(column_name) from table_name;
+
+->SUM() : Returns sum of all the values of the selected column.
+ select sum(salary) from employee;	  
++-------------+							
+| sum(salary) |
++-------------+
+|      302000 |							
++-------------+
+
+->MIN() : Returns minimum value of the selected column.
+select min(salary) from employee;	
++-------------+
+| min(salary) |
++-------------+
+|        2000 |
++-------------+
+
+-> MAX() : Returns maximum value of the selected column.
+ select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|       55000 |
++-------------+
+
+->AVG() : Returns Average Value.
+ select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|  33555.5556 |
++-------------+
+
+->COUNT() :  It counts the number of rows.
+select count(*) from employee;
++----------+
+| count(*) |
++----------+
+|        9 |
++----------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+								:ORDER BY CLAUSE:
+
+-> ORDER BY keyword is used to sort the result in ascending or descending order
+
+		Syntax: Select * from table_name where col_name order by col_name asc/desc;
+
+Note: Order of execution:
+	1.From
+	2.Where
+	3.Select
+	4.OrderBy
+
+
+wqtd all the result of employee and salary should be in descending order.
+->	select * from employee order by salary desc;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+								:SUB-QUERY CLAUSE:
+
+-> A Query inside another Query is called sub-query.
+		
+		Syntax : select * from table_name where col_name operator(select * from table_name);
+				outer query					inner query
+
+-> 1st inner query will get executed & the result of inner query will be given as input to outer query.
+-> The final result will be from outer query.
+-> Types: 1.Single-row subquery = when the relational operators are used & the result of inner query is single value.
+	  2.Multi-row subquery = when the special operators are used & the result of inner query is multi value.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+mysql> use ust_db;
+Database changed
+
+mysql> show tables;
++------------------+
+| Tables_in_ust_db |
++------------------+
+| employee         |
+| product_info     |
++------------------+
+
+
+mysql> create table department(deptno int , dname varchar(100), location varchar(100), primary key(deptno));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> desc department;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| deptno   | int(11)      | NO   | PRI | NULL    |       |
+| dname    | varchar(100) | YES  |     | NULL    |       |
+| location | varchar(100) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into department values(10, 'admin',' delhi'),(20,' operator',' mumbai'),(30,'maintainance','bangalore'),(40,'development','pune');
+     -> insert into department values(50, 'admin','Hyderabad');
+mysql> select * from department;
++--------+--------------+-----------+
+| deptno | dname        | location  |
++--------+--------------+-----------+
+|     10 | admin        |  delhi    |
+|     20 |  operator    |  mumbai   |
+|     30 | maintainance | bangalore |
+|     40 | development  | pune      |
+|     50 | admin        | Hyderabad |
++--------+--------------+-----------+
+===========================================================================================================================================================
+1.Single-row subquery
+	Syntax: Select * from table_name where col_name Relational Operator(select col_name from table_name);
+
+wqtd all the record of employee whose DOJ is same as pooja .
+->	 select * from employee where DOJ = ( select DOJ from employee where ename = 'pooja');
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+========================================================================================================================================================
+wqtd the second maximum salary.
+->	select max(salary) from employee where salary < (select max(salary) from employee);
++-------------+
+| max(salary) |
++-------------+
+|       50000 |
++-------------+
+======================================================================================================================================================
+-> Any Operator: If any condition is satisfied we get the result set.
+-> All Operator: If all conditions are satisfied then only we get the result set.
+====================================================================================================================================================
+2.Multi-row subquery
+	Syntax: Select * from table_name where col_name Special Operator(select col_name from table_name);
+
+wqtd name of employee who is working in location which has atleast 1 'a' in the location
+->	select ename from employee where deptno in (select deptno from department where location Like '%a%');
++---------+
+| ename   |
++---------+
+| banu    |
+| haseeb  |
+| pooja   |
+| puneeth |
+| bhargav |
++---------+
+=========================================================================================================================================================
+wqtd all the record of employee who is working in admin,operator,development.
+->	select * from employee where deptno in ( select deptno from department where dname in ('admin',' operator','development'));
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+						        :GROUP BY CLAUSE:
+
+-> Group by will execute row-by-row.
+-> 	Syntax: select count(*) from table_name where condition group by col_name;
+-> Order of Execution:
+	1.From
+	2.where
+	3.GroupBy
+	4.Select
+
+wqtd the maximum salary of each department.
+->	select max(salary) from employee group by deptno;
++-------------+
+| max(salary) |
++-------------+
+|       25000 |
+|       45000 |
+|       50000 |
+|       55000 |
++-------------+
+======================================================================================================================================================
+wqtd the highest salary given to HR for each department.
+->	 select max(salary) from employee where designation = 'HR' group by deptno;
++-------------+
+| max(salary) |
++-------------+
+|       25000 |
+|       45000 |
++-------------+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							
+							:HAVING CLAUSE:
+
+-> Having clause is return only with group by clause.
+-> It filters the record from group by result.
+	Syntax: select * from table_name where condition group by col_name having condition;
+-> For having clause we have to pass only one column name or one condition.
+-> Order of Execution:
+	1.From
+	2.Where
+	3.Group by
+	4.Having
+	5.Select
+	6.Order by
+
+wqtd deptno which has atleast 2 employee working.
+->	 select deptno from employee group by deptno having count(deptno)>=2;
++--------+
+| deptno |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     40 |
++--------+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
+							:Transactional Control Language:
+
+1.Rollback: reversing the data.
+2.Commit:permanently same.
+3.Savepoint:
+
+ysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |       10 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
++------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> insert into product_info values(4,'eraser',40);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |       10 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
++------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> set auto commit=0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'commit=0' at line 1
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into product_info values(5,'mobile',50);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |       10 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
+|    5 | mobile |       50 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |       10 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
++------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> update product_info set quantity = 01 where pid=1;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |        1 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
++------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |        1 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
++------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> savepoint a;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into product_info values(5,'mobile',50);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> savepoint b;;
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> update product_info set quantity = 02 where pid=2;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |        1 |
+|    2 | pen    |        2 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
+|    5 | mobile |       50 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> rollback to a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from  product_info;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pencil |        1 |
+|    2 | pen    |       20 |
+|    3 | book   |       30 |
+|    4 | eraser |       40 |
++------+--------+----------+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+								:JOINS:
+
+1. Cross Join / Cartesian Join : Record from the 1st table will merge with all the records of 2nd table.
+
+	Syntax: ASI :select * from table_name1 cross join table_name2
+		ORACLE : select * from table_name1,table_name2
+
+Eg:
+ select * from  employee cross join department;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        | deptno | dname        | location  |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     10 | admin        |  delhi    |
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     20 |  operator    |  mumbai   |
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     30 | maintainance | bangalore |
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     40 | development  | pune      |
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     50 | admin        | Hyderabad |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     10 | admin        |  delhi    |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     20 |  operator    |  mumbai   |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     30 | maintainance | bangalore |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     40 | development  | pune      |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     50 | admin        | Hyderabad |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     10 | admin        |  delhi    |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     20 |  operator    |  mumbai   |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     30 | maintainance | bangalore |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     40 | development  | pune      |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     50 | admin        | Hyderabad |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     10 | admin        |  delhi    |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     20 |  operator    |  mumbai   |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     30 | maintainance | bangalore |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     40 | development  | pune      |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     50 | admin        | Hyderabad |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     10 | admin        |  delhi    |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     20 |  operator    |  mumbai   |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     30 | maintainance | bangalore |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     40 | development  | pune      |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     50 | admin        | Hyderabad |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     10 | admin        |  delhi    |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     20 |  operator    |  mumbai   |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     30 | maintainance | bangalore |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     40 | development  | pune      |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     50 | admin        | Hyderabad |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     10 | admin        |  delhi    |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     20 |  operator    |  mumbai   |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     30 | maintainance | bangalore |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     40 | development  | pune      |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     50 | admin        | Hyderabad |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     10 | admin        |  delhi    |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     20 |  operator    |  mumbai   |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     30 | maintainance | bangalore |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     40 | development  | pune      |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     50 | admin        | Hyderabad |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     10 | admin        |  delhi    |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     20 |  operator    |  mumbai   |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     30 | maintainance | bangalore |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     40 | development  | pune      |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     50 | admin        | Hyderabad |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+	-> To calculate number of rows present in result table : m * n;
+
+============================================================================================================================================================================================
+2.Inner Join : It is used to obtain only matching record from the table.
+
+	Syntax: ASI :select * from table_name1 Inner Join table_name2 on condition;
+		ORACLE :select * from table_name1,table_name2 where<join condition>;
+Eg:
+select * from employee emp inner join department dept on emp.deptno = dept.deptno;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        | deptno | dname        | location  |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     20 |  operator    |  mumbai   |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     30 | maintainance | bangalore |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     40 | development  | pune      |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     10 | admin        |  delhi    |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     20 |  operator    |  mumbai   |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     30 | maintainance | bangalore |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     40 | development  | pune      |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     10 | admin        |  delhi    |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     20 |  operator    |  mumbai   |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+=============================================================================================================================================================================================
+3.Outer Join :
+  Types:-
+	 a.Left-Outer Join: It is the combination of inner join and unmatched record present in left table.
+	
+			Syntax: ASI    :select * from table_name1 left outer join table_name2 on T1.col_name=T2.col_name;
+				ORACLE :select * from table_name1 where T1.column_name = T2.column_name(+);
+
+Eg:
+select * from employee emp left outer join department dept on emp.deptno = dept.deptno;
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        | deptno | dname        | location  |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     20 |  operator    |  mumbai   |
+| 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     30 | maintainance | bangalore |
+| 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     40 | development  | pune      |
+| 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     10 | admin        |  delhi    |
+| 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     20 |  operator    |  mumbai   |
+| 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     30 | maintainance | bangalore |
+| 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     40 | development  | pune      |
+| 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     10 | admin        |  delhi    |
+| 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     20 |  operator    |  mumbai   |
++-----+---------+-----------+------------+-----+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+
+	b.Right-Outer Join: It is the combination of inner join and unmatched record present in right table.
+
+			Syntax: ASI    :select * from table_name1 right outer join table_name2 on T1.col_name=T2.col_name;
+			        ORACLE :select * from table_name1 where T1.column_name(+) = T2.column_name;
+Eg:
+select * from employee emp right outer join department dept on emp.deptno = dept.deptno;
++------+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+| eid  | ename   | mobileno  | DOB        | age  | DOJ        | bloodgroup | deptno | salary | email             | gender | designation        | deptno | dname        | location  |
++------+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+|  102 | banu    |     22877 | 1991-03-01 |   30 | 2012-12-05 | B-         |     20 |   2000 | mary@gmail.com    | female | clerk              |     20 |  operator    |  mumbai   |
+|  103 | haseeb  | 991633754 | 1995-03-03 |   24 | 2016-04-15 | A+         |     30 |  50000 | haseeb@gmail.com  | male   | manager            |     30 | maintainance | bangalore |
+|  104 | halima  | 953590083 | 1997-07-11 |   22 | 2016-04-15 | A+         |     40 |  30000 | halima@gmail.com  | female | tester             |     40 | development  | pune      |
+|  105 | ramesh  | 956324823 | 1995-02-14 |   24 | 2017-05-02 | o+         |     10 |  25000 | ramesh@gmail.com  | male   | HR                 |     10 | admin        |  delhi    |
+|  106 | pooja   | 701905168 | 1997-07-11 |   22 | 2019-07-16 | A+         |     20 |  35000 | pooja@gmail.com   | female | techsupport        |     20 |  operator    |  mumbai   |
+|  107 | puneeth | 701682538 | 1997-07-11 |   22 | 2019-07-16 | A+         |     30 |  35000 | puneeth@gmail.com | male   | software developer |     30 | maintainance | bangalore |
+|  108 | nadeem  | 935325628 | 1993-07-11 |   27 | 2012-10-26 | A+         |     40 |  55000 | nadeem@gmail.com  | male   | software developer |     40 | development  | pune      |
+|  109 | sathya  | 935868923 | 1995-12-12 |   25 | 2014-12-26 | AB-        |     10 |  25000 | sathya@gmail.com  | male   | tester             |     10 | admin        |  delhi    |
+|  110 | bhargav | 785142639 | 1998-02-24 |   21 | 2019-03-26 | o-         |     20 |  45000 | bhargav@gmail.com | male   | HR                 |     20 |  operator    |  mumbai   |
+| NULL | NULL    |      NULL | NULL       | NULL | NULL       | NULL       |   NULL |   NULL | NULL              | NULL   | NULL               |     50 | admin        | Hyderabad |
++------+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------------+--------+--------------+-----------+
+
+	c.Full-Outer Join: It gives an unmatched record from both tables.
+			
+			Syntax: select * from table1 full outer join table2 on T1.col_name=T2.col_name;
+
+4.Natural Join : It is similar to inner join where we don't specify the condition.
+			It provides inner query ouput if there are common column present else it returns cartesian result;
+
+			Syntax: select * from table1 natural join table2;
+Eg:
+select * from employee emp natural join department dept ;
++--------+-----+---------+-----------+------------+-----+------------+------------+--------+-------------------+--------+--------------------+--------------+-----------+
+| deptno | eid | ename   | mobileno  | DOB        | age | DOJ        | bloodgroup | salary | email             | gender | designation        | dname        | location  |
++--------+-----+---------+-----------+------------+-----+------------+------------+--------+-------------------+--------+--------------------+--------------+-----------+
+|     20 | 102 | banu    |     22877 | 1991-03-01 |  30 | 2012-12-05 | B-         |   2000 | mary@gmail.com    | female | clerk              |  operator    |  mumbai   |
+|     30 | 103 | haseeb  | 991633754 | 1995-03-03 |  24 | 2016-04-15 | A+         |  50000 | haseeb@gmail.com  | male   | manager            | maintainance | bangalore |
+|     40 | 104 | halima  | 953590083 | 1997-07-11 |  22 | 2016-04-15 | A+         |  30000 | halima@gmail.com  | female | tester             | development  | pune      |
+|     10 | 105 | ramesh  | 956324823 | 1995-02-14 |  24 | 2017-05-02 | o+         |  25000 | ramesh@gmail.com  | male   | HR                 | admin        |  delhi    |
+|     20 | 106 | pooja   | 701905168 | 1997-07-11 |  22 | 2019-07-16 | A+         |  35000 | pooja@gmail.com   | female | techsupport        |  operator    |  mumbai   |
+|     30 | 107 | puneeth | 701682538 | 1997-07-11 |  22 | 2019-07-16 | A+         |  35000 | puneeth@gmail.com | male   | software developer | maintainance | bangalore |
+|     40 | 108 | nadeem  | 935325628 | 1993-07-11 |  27 | 2012-10-26 | A+         |  55000 | nadeem@gmail.com  | male   | software developer | development  | pune      |
+|     10 | 109 | sathya  | 935868923 | 1995-12-12 |  25 | 2014-12-26 | AB-        |  25000 | sathya@gmail.com  | male   | tester             | admin        |  delhi    |
+|     20 | 110 | bhargav | 785142639 | 1998-02-24 |  21 | 2019-03-26 | o-         |  45000 | bhargav@gmail.com | male   | HR                 |  operator    |  mumbai   |
++--------+-----+---------+-----------+------------+-----+------------+------------+--------+-------------------+--------+--------------------+--------------+-----------+
+	
+5.Self Join : Joining of two same table is known as self Join.  Weuse this join whenever the data to be selected within same table 
+			but it should present in two different tables.
+		   -> Always we have to use alias name here.
+
+			Syntax: ASI :select * from table T1 join table T2 on condition;
+				ORACLE:select * from table T1 table T2 where condition;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+>>Key Attributes : The attribute with the help of which we can identify the record uniquely.
+
+>>Non-Key Attributes : All the attributes except key attributes.
+
+>>Prime-Key Attributes: Among the key attributes to be choosen to identify the records in the table.
+
+>>Non-Primekey Attributes : All the attributes except primekey-attribute.
+
+>>Composite-Key Attributes : The combination of two or more key attributes which is used to identify a record uniquely. 
+
+>>Foreign-Key : It is used to connect the 2 tables.
+
+>>Super-key : The set of all the attributes.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+							:FUNCTIONAL DEPENDENCY:
+
+->  A Relation which exist such that an attributes determine another attributes uniquely i.e known as functional dependency.
+	Eg: R->{x,y} == x determines y where x is unique and y is dependent.
+
+-> Types:-
+	1.Toatal F.D : If all the attributes of a relation is determined by a key attributes i.e known as Total F.D.
+ 			Eg: R->{A,B,C,D} where A is key Attribute & remaining attributes are depending on A.
+
+	2.Partial F.D : A Relational is said to have partial F.D if
+				 > it consist a composite attributes.
+				 > Their exists state is dependency such that an attributes can determine by other attribute which is part of 
+					composite attribute.
+			Eg: R->{A,B,C,D} where A,B is key Attribute & remaining attributes are depending on A & B.
+				i.e {A,B}->{C,D} 
+
+	3.Transitive F.D : A Relation is said to have transitive F.D if their exist a relation such that an attribute is determined by 
+			non-key attribute which in turn is determined a key-attribute.
+			Eg: R->{A,B,C,D} where A determines B, B determines C then, A determines C.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+							   :NORMALIZATION:
+
+->  The Process of decomposing table into smaller table in order to remove redendency and anamolies  by identifying dependency.      
+								
+								or
+	
+				The Process of reducing table into normal form is called normalization.
+
+-> Normal Forms: A state of table without redendency and anamoly is called Normal forms.
+
+				[Anamoly: The problem occured during DME operation.]
+	
+	1. A table is said to be in first normal form if it satisfies the following condition:
+
+		>> A table should not contain Duplicate records.
+		>> Every cell in a table should be a single value(Atomic Value).
+		
+	2. A table is said to be in second normal form if it satisfies the following condition:
+		
+		>> It should satisfy 1st NF.
+		>> A table should not contain partial F.D.
+
+	3. A table is said to be in third normal form if it satisfies the following condition:
+	
+		>> It should satisfy the 2nd NF.
+		>> It should not have transitive F.D.
+		
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+								:MAPPING:
+
+		Realationship between two or more tables.
+
+	1. One-to-One 
+	2. One-to-Many
+	3. Many-to-one 
+	4. Many-to-Many 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						
